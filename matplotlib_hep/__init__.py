@@ -68,9 +68,14 @@ def histpoints(x, bins=None, xerr=None, yerr='gamma', normed=False, **kwargs):
     if xerr == 'binwidth':
         xerr = width / 2
 
-    if normed:
-        h = h / area
-        yerr = yerr / area
+    if isinstance(normed, bool):
+        if normed:
+            h = h / area
+            yerr = yerr / area
+            area = 1.
+    else:
+        h = h / normed
+        yerr = (yerr[0] / normed, yerr[1] / normed)
         area = 1.
 
     if not 'color' in kwargs:
