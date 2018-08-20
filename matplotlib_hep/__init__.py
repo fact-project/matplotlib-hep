@@ -76,7 +76,7 @@ def histpoints(x, bins=None, xerr=None, yerr='gamma', normed=False, **kwargs):
     else:
         h = h / normed
         yerr = (yerr[0] / normed, yerr[1] / normed)
-        area = 1.
+        area = normed
 
     if not 'color' in kwargs:
         kwargs['color'] = 'black'
